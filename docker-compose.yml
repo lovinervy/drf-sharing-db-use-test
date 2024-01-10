@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16.1-alpine3.18
+    environment:
+      - POSTGRES_DB=shared
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - demo
+    restart: unless-stopped
+
+  prices:
+    build:
+      context: ./prices
+      target: devel
+    volumes:
+      - ./prices:/usr/src/app/
+    command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+    networks:
+      - demo
+    restart: unless-stopped
+
+
+
+networks:
+  demo:
