@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('share_id', models.PositiveIntegerField(blank=True, null=True)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('date', models.DateField()),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='prices', to='prices.product')),
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='price', to='price.product')),
             ],
             options={
                 'abstract': False,

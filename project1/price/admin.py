@@ -6,7 +6,7 @@ from .models import Product, ProductPrice
 @admin.register(Product)
 class SharedProductAdmin(admin.ModelAdmin):
     model = Product
-    using = 'share'
+    using = 'default'
     model._meta.verbose_name_plural = 'Продукты: общее'
 
     def save_model(self, request, obj, form, change):

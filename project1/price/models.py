@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from django.db import models
 
 class BaseModel(models.Model):
