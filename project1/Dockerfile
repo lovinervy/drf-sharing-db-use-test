@@ -8,8 +8,8 @@ RUN apk add libc-dev libffi-dev gcc bash
 COPY ./requirements.txt  .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-# COPY entrypoint.sh /usr/src/app/entrypoint.sh
-# RUN chmod +x /usr/src/app/entrypoint.sh
-# ENTRYPOINT [ "/usr/src/app/entrypoint.sh" ]
+COPY entrypoint.sh /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+ENTRYPOINT [ "/usr/src/app/entrypoint.sh" ]
 
 COPY . .
